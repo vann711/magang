@@ -938,4 +938,18 @@ class Cp_admin extends CI_Controller
               </div>');
         redirect('cp_admin/s_admin');
     }
+
+    public function deleteHistory($order_id)
+    {
+        $this->db->where('order_id', $order_id);
+        $this->db->delete('history_order');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Success</strong> to Delete Product.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>');
+        redirect('cp_admin/index');
+    }
 }

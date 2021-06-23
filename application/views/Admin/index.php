@@ -125,12 +125,12 @@
                             <th>payment_type</th>
                             <th>transaction_time</th>
                             <th>status_code</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($history_list as $o) : ?>
                             <tr>
-                            <?php if($o['status_code'] == "200") {?>
                                 <td><?php echo $o['order_id']; ?></td>
                                 <td><?php echo $o['nama']; ?></td>
                                 <td><?php echo $o['email']; ?></td>
@@ -155,7 +155,8 @@
                                     }
                                     ?>
                                 </td>
-                            <?php } ?>
+                                <td><a href="<?= base_url('cp_admin/deleteHistory/' . $o['order_id']) ?>" class="btn btn-sm btn-danger"><i class=" fas fa-trash-alt"></i></a></td>
+                            
                             </tr>
                         <?php endforeach; ?>
                         <?= $this->pagination->create_links(); ?>
